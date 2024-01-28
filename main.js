@@ -152,6 +152,7 @@ new RGBELoader().load('spruit_sunrise_1k.hdr', function (env) {
         mixer = new THREE.AnimationMixer(gltf.scene)
 
         clips.forEach((clip) => {
+            mixer.timeScale = -1
             mixer.clipAction(clip).reset().play()
         })
     }
@@ -273,7 +274,7 @@ function animate(time) {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
-    const dt = (time - prevTime) / 400;
+    const dt = (time - prevTime) / 400 ;
 
     if (mixer) mixer.update(dt);
 
